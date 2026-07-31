@@ -34,27 +34,10 @@ The application will open on your local development server.
 
 ## Technologies Used
 
-* HTML5
-* CSS3
-* JavaScript (ES6)
+* HTML
+* CSS
+* JavaScript
 * Chart.js
-
-## Folder Structure
-
-```text
-frontend/
-│── index.html
-│── login.html
-│── register.html
-│── dashboard.html
-│── assessment.html
-│── results.html
-│── profile.html
-│
-├── css/
-├── js/
-├── images/
-```
 
 ## Backend Integration
 
