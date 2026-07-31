@@ -1,6 +1,6 @@
 # Backend Setup
 
-This README explains how to set up and run the backend locally.
+This backend is an Express.js service with Prisma ORM and authentication routes.
 
 ## Prerequisites
 
@@ -8,7 +8,7 @@ Make sure you have the following installed:
 
 - Node.js 18 or newer
 - npm 9 or newer
-- A database if your backend requires one
+- PostgreSQL database
 
 ## Installation
 
@@ -19,20 +19,21 @@ Make sure you have the following installed:
    npm install
    ```
 
-3. Create an environment file:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-   If there is no `.env.example`, create a `.env` file manually and add the required variables. A typical example looks like this:
+3. Create a `.env` file in the backend folder and add the required environment variables:
 
    ```env
-   PORT=5000
+   PORT=3001
    NODE_ENV=development
+   DATABASE_URL=postgresql://<user>:<password>@<host>:<port>/<database>
+   DIRECT_URL=postgresql://<user>:<password>@<host>:<port>/<database>
    ```
 
-   Add any other variables required by your app, such as database connection strings or API keys.
+4. Generate the Prisma client and apply migrations:
+
+   ```bash
+   npx prisma generate
+   npx prisma migrate dev
+   ```
 
 ## Running the backend
 
@@ -42,21 +43,30 @@ Start the backend in development mode:
 npm run dev
 ```
 
-If your project uses a different script name, use the one defined in `package.json`.
+The server will run on:
 
-To run the production build:
-
-```bash
-npm start
+```text
+http://localhost:3001
 ```
+
+## API Overview
+
+The main API entry point is mounted at `/api/auth`.
+
+Available routes:
+
+- `POST /api/auth` — create a new user
+- `GET /api/auth` — authenticate a user with email and password
 
 ## Common issues
 
-- If you get `module not found` errors, run `npm install` again.
+- If you see `module not found` errors, run `npm install` again.
 - If the port is already in use, change the `PORT` value in your `.env` file.
-- If you are missing environment variables, check your `.env` file and the app configuration.
+- If Prisma throws connection errors, verify your `DATABASE_URL` and `DIRECT_URL` values.
+- If the Prisma client is missing, run `npx prisma generate`.
 
 ## Notes
 
-- The backend should be available at `http://localhost:<PORT>` by default.
-- If you use a different package manager such as Yarn or pnpm, replace `npm` with the appropriate command.
+- The app entry point is `src/index.js`.
+- The main app setup lives in `src/app.js`.
+- Prisma models are defined in `prisma/schema.prisma`.
