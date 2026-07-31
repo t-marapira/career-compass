@@ -1,0 +1,191 @@
+/* -------------------- GLOBAL -------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #2563EB, #10B981);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+/* -------------------- LOGIN CONTAINER -------------------- */
+
+.login-container {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+
+/* -------------------- LOGIN CARD -------------------- */
+
+.login-card {
+
+    width: 420px;
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+}
+
+.login-card h2 {
+
+    text-align: center;
+    color: #2563EB;
+    margin-bottom: 10px;
+
+}
+
+.login-card p {
+
+    text-align: center;
+    color: #6B7280;
+    margin-bottom: 30px;
+
+}
+
+/* -------------------- FORM -------------------- */
+
+.input-group {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+
+.input-group label {
+
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #1F2937;
+
+}
+
+.input-group input {
+
+    padding: 14px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+
+}
+
+.input-group input:focus {
+
+    border-color: #2563EB;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+
+}
+
+/* -------------------- LINKS -------------------- */
+
+.forgot-password {
+
+    display: block;
+    text-align: right;
+    margin-bottom: 25px;
+    color: #2563EB;
+    text-decoration: none;
+    font-size: 14px;
+
+}
+
+.forgot-password:hover {
+
+    text-decoration: underline;
+
+}
+
+/* -------------------- BUTTON -------------------- */
+
+button {
+
+    width: 100%;
+    padding: 14px;
+    background: #2563EB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+button:hover {
+
+    background: #1D4ED8;
+
+}
+
+/* -------------------- REGISTER -------------------- */
+
+.register-text {
+
+    text-align: center;
+    margin-top: 25px;
+
+}
+
+.register-text a {
+
+    color: #10B981;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+.register-text a:hover {
+
+    text-decoration: underline;
+
+}
+
+/* -------------------- BACK HOME -------------------- */
+
+.back-home {
+
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: 500;
+
+}
+
+.back-home:hover {
+
+    text-decoration: underline;
+
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+
+@media (max-width: 500px) {
+
+    .login-card {
+
+        width: 100%;
+        padding: 30px;
+
+    }
+
+}
