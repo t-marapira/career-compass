@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import authRoute from "./routes/auth.route.js";
+import authRouter from "./routes/auth.route.js";
+import skillRouter from "./routes/skill.route.js";
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("/api/auth", authRoute);
+app.use("/api/auth", authRouter);
+app.use("/api/skills",skillRouter)
 
 export default app;

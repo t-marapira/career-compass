@@ -6,9 +6,9 @@ import {
   validateGetUser,
 } from "../validation/auth.validation.js";
 
-const authRoute = Router();
+const authRouter = Router();
 
-authRoute.get("/", validateGetUser, authController.getUser);
-authRoute.post("/", validateCreateUser, authController.createUser);
+authRouter.get("/", validateGetUser, authController.getUser);
+authRouter.post("/", validateCreateUser, authController.createUser);
 
-export default authRoute;
+export default authRouter;
