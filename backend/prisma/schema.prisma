@@ -6,11 +6,41 @@ datasource db {
   provider = "postgresql"
 }
 
-
-model User{
-  id String @id @default(uuid())
-  email String @unique
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
   password String
 
+  completedModules Module[]
+  skills Skill[]
+
   createdAt DateTime @default(now())
+}
+
+model Module {
+  id       String @id @default(uuid())
+  fullName String
+  code     String @unique
+
+  acquiredSkills Skill[]
+
+  users User[]
+}
+
+model Skill {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  recommendations String[]
+
+  modules Module[]
+
+  roles Career[]
+
+  users User[]
+}
+
+model Career {
+  id             String  @id @default(uuid())
+  name           String
+  requiredSkills Skill[]
 }
