@@ -1,0 +1,470 @@
+/* -------------------- GLOBAL -------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+    background: #F8FAFC;
+    color: #1F2937;
+
+}
+
+/* -------------------- DASHBOARD LAYOUT -------------------- */
+
+.dashboard {
+
+    display: flex;
+    min-height: 100vh;
+
+}
+
+/* -------------------- SIDEBAR -------------------- */
+
+aside {
+
+    width: 250px;
+    background: #2563EB;
+    color: white;
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+
+}
+
+aside h2 {
+
+    text-align: center;
+    margin-bottom: 40px;
+
+}
+
+aside nav {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+aside nav a {
+
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+
+}
+
+aside nav a:hover {
+
+    background: rgba(255,255,255,0.2);
+
+}
+
+/* -------------------- MAIN -------------------- */
+
+main {
+
+    flex: 1;
+    margin-left: 250px;
+    padding: 40px;
+
+}
+
+/* -------------------- WELCOME -------------------- */
+
+.welcome {
+
+    margin-bottom: 40px;
+
+}
+
+.welcome h1 {
+
+    font-size: 2.2rem;
+    color: #2563EB;
+    margin-bottom: 10px;
+
+}
+
+.welcome p {
+
+    color: #6B7280;
+
+}
+
+/* -------------------- DASHBOARD CARDS -------------------- */
+
+.cards {
+
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+
+}
+
+.card {
+
+    flex: 1;
+    min-width: 220px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(37,99,235,0.15);
+
+}
+
+.card h3 {
+
+    color: #6B7280;
+    margin-bottom: 15px;
+
+}
+
+.card h2 {
+
+    color: #2563EB;
+    font-size: 2rem;
+
+}
+
+/* -------------------- CHART SECTION -------------------- */
+
+.chart-section {
+
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+
+}
+
+.chart-section h2 {
+
+    margin-bottom: 20px;
+    color: #2563EB;
+
+}
+
+#progressChart {
+
+    width: 100%;
+    max-height: 400px;
+
+}
+
+/* -------------------- RECOMMENDED COURSES -------------------- */
+
+.courses {
+
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+
+}
+
+.courses h2 {
+
+    color: #2563EB;
+    margin-bottom: 20px;
+
+}
+
+.courses ul {
+
+    list-style: none;
+
+}
+
+.courses li {
+
+    background: #F8FAFC;
+    border-left: 5px solid #10B981;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+
+}
+
+.courses li:hover {
+
+    background: #E0F2FE;
+    transform: translateX(8px);
+
+}
+
+/* -------------------- CAREER ROADMAP -------------------- */
+
+.roadmap {
+
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+
+}
+
+.roadmap h2 {
+
+    color: #2563EB;
+    margin-bottom: 20px;
+
+}
+
+.roadmap ol {
+
+    padding-left: 20px;
+
+}
+
+.roadmap li {
+
+    margin-bottom: 15px;
+    color: #374151;
+    font-size: 1rem;
+
+}
+
+/* -------------------- SECTION SPACING -------------------- */
+
+.chart-section,
+.courses,
+.roadmap {
+
+    transition: 0.3s;
+
+}
+
+.chart-section:hover,
+.courses:hover,
+.roadmap:hover {
+
+    box-shadow: 0 12px 25px rgba(37,99,235,0.15);
+
+}
+
+/* -------------------- SCROLLBAR -------------------- */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+
+    background: #F1F5F9;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #2563EB;
+    border-radius: 10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #1D4ED8;
+
+}
+
+/* -------------------- TABLETS -------------------- */
+
+@media (max-width: 992px) {
+
+    aside {
+
+        width: 220px;
+
+    }
+
+    main {
+
+        margin-left: 220px;
+        padding: 30px;
+
+    }
+
+    .cards {
+
+        justify-content: center;
+
+    }
+
+}
+
+/* -------------------- MOBILE -------------------- */
+
+@media (max-width: 768px) {
+
+    .dashboard {
+
+        flex-direction: column;
+
+    }
+
+    aside {
+
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+
+    }
+
+    aside h2 {
+
+        margin-bottom: 20px;
+
+    }
+
+    aside nav {
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+
+    }
+
+    aside nav a {
+
+        padding: 10px 16px;
+
+    }
+
+    main {
+
+        margin-left: 0;
+        padding: 20px;
+
+    }
+
+    .welcome h1 {
+
+        font-size: 2rem;
+
+    }
+
+    .cards {
+
+        flex-direction: column;
+
+    }
+
+    .card {
+
+        width: 100%;
+
+    }
+
+}
+
+/* -------------------- SMALL PHONES -------------------- */
+
+@media (max-width: 480px) {
+
+    .welcome h1 {
+
+        font-size: 1.7rem;
+
+    }
+
+    .chart-section,
+    .courses,
+    .roadmap {
+
+        padding: 20px;
+
+    }
+
+    .card {
+
+        padding: 20px;
+
+    }
+
+}
+
+/* -------------------- ANIMATIONS -------------------- */
+
+.card,
+.chart-section,
+.courses,
+.roadmap {
+
+    animation: fadeUp 0.8s ease;
+
+}
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+}
+
+/* -------------------- BUTTON EFFECTS -------------------- */
+
+button {
+
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+/* -------------------- LINKS -------------------- */
+
+aside nav a.active {
+
+    background: rgba(255,255,255,0.25);
+    font-weight: 600;
+
+}
+
+/* -------------------- CHART -------------------- */
+
+canvas {
+
+    width: 100% !important;
+
+}

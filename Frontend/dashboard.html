@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Compass | Dashboard</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+
+        <aside>
+
+            <h2>Career Compass</h2>
+
+            <nav>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="assessment.html">Assessment</a>
+
+                <a href="results.html">Results</a>
+
+                <a href="profile.html">Profile</a>
+
+                <a href="index.html">Logout</a>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main>
+
+            <section class="welcome">
+
+                <h1>Welcome Back!</h1>
+
+                <p>
+                    Continue tracking your career readiness and skill development.
+                </p>
+
+            </section>
+
+            <!-- DASHBOARD CARDS -->
+
+            <section class="cards">
+
+                <div class="card">
+
+                    <h3>Career Match</h3>
+
+                    <h2>82%</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Modules Completed</h3>
+
+                    <h2>12</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Missing Skills</h3>
+
+                    <h2>5</h2>
+
+                </div>
+
+            </section>
+
+            <!-- CHART -->
+
+            <section class="chart-section">
+
+                <h2>Career Progress</h2>
+
+                <canvas id="progressChart"></canvas>
+
+            </section>
+
+            <!-- RECOMMENDED COURSES -->
+
+            <section class="courses">
+
+                <h2>Recommended Courses</h2>
+
+                <ul>
+
+                    <li>Git & GitHub Fundamentals</li>
+
+                    <li>REST API Development</li>
+
+                    <li>Docker Essentials</li>
+
+                    <li>Cloud Computing Basics</li>
+
+                </ul>
+
+            </section>
+
+            <!-- ROADMAP -->
+
+            <section class="roadmap">
+
+                <h2>Career Roadmap</h2>
+
+                <ol>
+
+                    <li>Complete Remaining Modules</li>
+
+                    <li>Learn Missing Skills</li>
+
+                    <li>Build Portfolio Projects</li>
+
+                    <li>Apply for Graduate Programmes</li>
+
+                </ol>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

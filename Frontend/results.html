@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Compass | Results</title>
+
+    <link rel="stylesheet" href="css/results.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+
+        <aside>
+
+            <h2>Career Compass</h2>
+
+            <nav>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="assessment.html">Assessment</a>
+
+                <a href="results.html" class="active">Results</a>
+
+                <a href="profile.html">Profile</a>
+
+                <a href="index.html">Logout</a>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main>
+
+            <section class="page-title">
+
+                <h1>Career Assessment Results</h1>
+
+                <p>
+                    Here's how your current skills compare with industry requirements.
+                </p>
+
+            </section>
+
+            <!-- SUMMARY -->
+
+            <section class="summary">
+
+                <div class="summary-card">
+
+                    <h3>Career Match</h3>
+
+                    <h2>82%</h2>
+
+                </div>
+
+                <div class="summary-card">
+
+                    <h3>Completed Skills</h3>
+
+                    <h2>18</h2>
+
+                </div>
+
+                <div class="summary-card">
+
+                    <h3>Missing Skills</h3>
+
+                    <h2>5</h2>
+
+                </div>
+
+                <div class="summary-card">
+
+                    <h3>Recommended Courses</h3>
+
+                    <h2>4</h2>
+
+                </div>
+
+            </section>
+
+            <!-- CHARTS -->
+
+            <section class="charts">
+
+                <div class="chart-card">
+
+                    <h2>Skill Match Radar</h2>
+
+                    <canvas id="radarChart"></canvas>
+
+                </div>
+
+                <div class="chart-card">
+
+                    <h2>Skill Progress</h2>
+
+                    <canvas id="barChart"></canvas>
+
+                </div>
+
+            </section>
+
+            <!-- MISSING SKILLS -->
+
+            <section class="skills">
+
+                <div class="skill-card">
+
+                    <h2>Missing Core Skills</h2>
+
+                    <ul>
+
+                        <li>Docker</li>
+                        <li>REST APIs</li>
+                        <li>GitHub</li>
+                        <li>Cloud Computing</li>
+                        <li>CI/CD</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <h2>Recommended Micro-Courses</h2>
+
+                    <ul>
+
+                        <li>Git & GitHub Fundamentals</li>
+                        <li>Docker Essentials</li>
+                        <li>REST API Development</li>
+                        <li>AWS Cloud Practitioner</li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/results.js"></script>
+
+</body>
+
+</html>

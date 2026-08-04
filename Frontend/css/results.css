@@ -1,0 +1,294 @@
+/* -------------------- GLOBAL -------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+    background: #F8FAFC;
+    color: #1F2937;
+
+}
+
+/* -------------------- LAYOUT -------------------- */
+
+.dashboard {
+
+    display: flex;
+    min-height: 100vh;
+
+}
+
+/* -------------------- SIDEBAR -------------------- */
+
+aside {
+
+    width: 250px;
+    background: #2563EB;
+    color: white;
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+
+}
+
+aside h2 {
+
+    text-align: center;
+    margin-bottom: 40px;
+
+}
+
+aside nav {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+aside nav a {
+
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+
+}
+
+aside nav a:hover,
+aside nav a.active {
+
+    background: rgba(255,255,255,0.20);
+
+}
+
+/* -------------------- MAIN -------------------- */
+
+main {
+
+    flex: 1;
+    margin-left: 250px;
+    padding: 40px;
+
+}
+
+/* -------------------- PAGE TITLE -------------------- */
+
+.page-title {
+
+    margin-bottom: 35px;
+
+}
+
+.page-title h1 {
+
+    color: #2563EB;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+
+}
+
+.page-title p {
+
+    color: #6B7280;
+
+}
+
+/* -------------------- SUMMARY CARDS -------------------- */
+
+.summary {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+
+}
+
+.summary-card {
+
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+
+}
+
+.summary-card:hover {
+
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(37,99,235,0.15);
+
+}
+
+.summary-card h3 {
+
+    color: #6B7280;
+    margin-bottom: 15px;
+
+}
+
+.summary-card h2 {
+
+    font-size: 2rem;
+    color: #2563EB;
+
+}
+
+/* -------------------- CHARTS -------------------- */
+
+.charts {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+
+}
+
+.chart-card {
+
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+
+}
+
+.chart-card h2 {
+
+    margin-bottom: 20px;
+    color: #2563EB;
+
+}
+
+.chart-card canvas {
+
+    width: 100% !important;
+    max-height: 350px;
+
+}
+
+/* -------------------- SKILLS -------------------- */
+
+.skills {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 30px;
+
+}
+
+.skill-card {
+
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: .3s;
+
+}
+
+.skill-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+.skill-card h2 {
+
+    color: #2563EB;
+    margin-bottom: 20px;
+
+}
+
+.skill-card ul {
+
+    list-style: none;
+
+}
+
+.skill-card li {
+
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #EFF6FF;
+    border-left: 5px solid #10B981;
+    border-radius: 8px;
+
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+
+@media (max-width:768px){
+
+    .dashboard{
+
+        flex-direction:column;
+
+    }
+
+    aside{
+
+        position:relative;
+        width:100%;
+        height:auto;
+
+    }
+
+    main{
+
+        margin-left:0;
+        padding:20px;
+
+    }
+
+    .charts{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .skills{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* -------------------- ANIMATION -------------------- */
+
+.summary-card,
+.chart-card,
+.skill-card{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
