@@ -15,6 +15,9 @@ import careerRouter from "./routes/career.route.js";
 const app = express();
 
 // Middleware
+// const allowedOrigins = [
+//     'http://localhost:3000'
+// ]
 app.use(cors());
 app.use(express.json());
 
