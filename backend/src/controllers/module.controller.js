@@ -74,3 +74,28 @@ export async function addSkills(req, res) {
     }
   });
 }
+
+export async function getModuleByID(req, res) {
+  handleValidationErrors(req, res, async () => {
+    try {
+      const { id } = req.params;
+
+      const module = await prisma.module.findFirst({
+        where: { id },
+        include: { acquiredSkills: true },
+      });
+
+      if (!module) {
+        return res
+          .status(404)
+          .json({ success: false, msg: "Module with ID not found" });
+      }
+
+      return res.status(200).json({ success: true, module });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ success: false, msg: "Internal Server Error", error });
+    }
+  });
+}
