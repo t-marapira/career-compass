@@ -1,3 +1,9 @@
+const API_BASE_URL =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:3000"
+    : "https://career-compass-api-allb.onrender.com"; // Your Render backend URL
+
 const assessmentForm = document.querySelector("form");
 
 async function validateCareerInput() {
@@ -38,7 +44,7 @@ assessmentForm.addEventListener("submit", async function (e) {
   const checkedModulesIds = await getSelectedModules();
 
   //   get results from data pipeline
-  const res = await fetch("http://localhost:3000/api/data", {
+  const res = await fetch(`${API_BASE_URL}/api/data`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,7 +70,7 @@ assessmentForm.addEventListener("submit", async function (e) {
 
 // function to add all of the careers listed in backend
 async function getCareers() {
-  const res = await fetch("http://localhost:3000/api/career", {
+  const res = await fetch(`${API_BASE_URL}/api/career`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -94,7 +100,7 @@ async function getCareers() {
 
 async function getModules() {
   // <label><input type="checkbox" /> Mathematics</label>
-  const res = await fetch("http://localhost:3000/api/module", {
+  const res = await fetch(`${API_BASE_URL}/api/module`, {
     method: "GET",
     headers: {
       Accept: "application/json",
