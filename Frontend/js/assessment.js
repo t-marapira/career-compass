@@ -1,45 +1,126 @@
 const assessmentForm = document.querySelector("form");
 
-assessmentForm.addEventListener("submit", function (e) {
+async function validateCareerInput() {
+  const career = document.querySelector("select").value;
+  if (career === "Select a Career") {
+    await alert("Please select a career.");
 
-    e.preventDefault();
+    throw new Error("Please select a career");
+  }
 
-    const career = document.querySelector("select").value;
+  return career;
+}
 
-    const checkedModules = [];
+async function getSelectedModules() {
+  const checkedModules = [];
 
-    const checkboxes = document.querySelectorAll(".module-list input");
+  const checkboxes = document.querySelectorAll(".module-list input");
 
-    checkboxes.forEach(box => {
+  checkboxes.forEach((box) => {
+    if (box.checked) {
+      checkedModules.push(box.value);
+    }
+  });
 
-        if (box.checked) {
+  if (checkedModules.length === 0) {
+    await alert("Please select at least one completed module.");
 
-            checkedModules.push(box.parentElement.textContent.trim());
+    return;
+  }
 
-        }
+  return checkedModules;
+}
 
+assessmentForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const careerId = await validateCareerInput();
+  const checkedModulesIds = await getSelectedModules();
+
+  //   get results from data pipeline
+  const res = await fetch("http://localhost:3000/api/data", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      targetRoleId: careerId,
+      moduleIds: checkedModulesIds,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Unable to fetch results");
+  }
+
+  const data = await res.json();
+
+  const results = data.results;
+  localStorage.setItem("results", JSON.stringify(results));
+
+  window.location.href = "results.html";
+});
+
+// function to add all of the careers listed in backend
+async function getCareers() {
+  const res = await fetch("http://localhost:3000/api/career", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Unable to fetch careers");
+  }
+
+  const data = await res.json();
+
+  const careers = data.careers;
+
+  const career_list_ele = document.getElementById("career-list");
+
+  if (career_list_ele) {
+    careers.forEach((career) => {
+      const optEle = document.createElement("option");
+      optEle.value = career.id;
+      optEle.innerHTML = career.name;
+
+      career_list_ele.appendChild(optEle);
     });
+  }
+}
 
-    if (career === "Select a Career") {
+async function getModules() {
+  // <label><input type="checkbox" /> Mathematics</label>
+  const res = await fetch("http://localhost:3000/api/module", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
 
-        alert("Please select a career.");
+  if (!res.ok) {
+    throw new Error("Unable to fetch modules");
+  }
 
-        return;
+  const data = await res.json();
 
-    }
+  const modules = data.modules;
+  const modulesContainer = document.getElementById("module-list");
+  if (modulesContainer && modules) {
+    modules.forEach((module) => {
+      const lbl = document.createElement("label");
+      const input = document.createElement("input");
 
-    if (checkedModules.length === 0) {
+      lbl.innerHTML = `<input type="checkbox" value="${module.id}" /> ${module.fullName}`;
+      modulesContainer.appendChild(lbl);
+    });
+  }
+}
 
-        alert("Please select at least one completed module.");
-
-        return;
-
-    }
-
-    console.log(career);
-
-    console.log(checkedModules);
-
-    window.location.href = "results.html";
-
+document.addEventListener("DOMContentLoaded", () => {
+  getCareers();
+  getModules();
 });

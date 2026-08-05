@@ -80,3 +80,17 @@ export async function getCareerByID(req, res) {
     }
   });
 }
+
+export async function getCareers(req, res) {
+  handleValidationErrors(req, res, async () => {
+    try {
+      const careers = await prisma.career.findMany();
+
+      return res.status(200).json({ success: true, careers });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ success: false, msg: "Internal Server Error", error });
+    }
+  });
+}

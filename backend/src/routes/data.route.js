@@ -4,6 +4,6 @@ import { getData } from "../controllers/data.controller.js";
 
 const dataRouter = Router();
 
-dataRouter.get("/",validateGetData,getData)
+dataRouter.post("/",validateGetData,getData)
 
 export default dataRouter;

@@ -1,3 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+const PORT = process.env.PORT;
+
 import express from "express";
 import cors from "cors";
 import authRouter from "./routes/auth.route.js";
@@ -10,8 +15,8 @@ import careerRouter from "./routes/career.route.js";
 const app = express();
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 // routes
 app.use("/api/auth", authRouter);

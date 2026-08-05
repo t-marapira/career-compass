@@ -2,96 +2,117 @@
 // Career Compass Results Charts
 // =============================
 
+// {
+//   "match_percentage": 25,
+//   "gap_percentage": 75,
+//   "skills_matched": [
+//     "Database Management & SQL"
+//   ],
+//   "skills_missing": [
+//     "Data Structures & Algorithms",
+//     "Full-Stack Web Development",
+//     "Software Engineering & Patterns"
+//   ]
+// }
+
+let results = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  results = JSON.parse(localStorage.getItem("results"));
+
+  const matchHeader = document.getElementById("match-value");
+  if (matchHeader) {
+    matchHeader.innerHTML = `${results.match_percentage}%`;
+  }
+
+  const missingHeader = document.getElementById("missing-value");
+  if (missingHeader) {
+    missingHeader.innerHTML = results.skills_missing.length;
+  }
+
+  const missingSkillsContainer = document.getElementById("missing-skills");
+  if (missingSkillsContainer) {
+    const skills_missing = results.skills_missing || [];
+    skills_missing.forEach((skill) => {
+      const li = document.createElement("li");
+      li.innerHTML = skill;
+      missingSkillsContainer.appendChild(li);
+    });
+  }
+});
+
 // ---------- Radar Chart ----------
 
 const radarCanvas = document.getElementById("radarChart");
 
 if (radarCanvas) {
+  new Chart(radarCanvas, {
+    type: "radar",
 
-    new Chart(radarCanvas, {
+    data: {
+      labels: [
+        "Programming",
+        "Databases",
+        "Web Dev",
+        "Git",
+        "REST APIs",
+        "Cloud",
+        "Problem Solving",
+      ],
 
-        type: "radar",
+      datasets: [
+        {
+          label: "Your Skills",
 
-        data: {
+          data: [85, 80, 90, 50, 45, 35, 88],
 
-            labels: [
-                "Programming",
-                "Databases",
-                "Web Dev",
-                "Git",
-                "REST APIs",
-                "Cloud",
-                "Problem Solving"
-            ],
+          fill: true,
 
-            datasets: [
+          backgroundColor: "rgba(37,99,235,0.2)",
 
-                {
-                    label: "Your Skills",
+          borderColor: "#2563EB",
 
-                    data: [85, 80, 90, 50, 45, 35, 88],
+          borderWidth: 2,
 
-                    fill: true,
-
-                    backgroundColor: "rgba(37,99,235,0.2)",
-
-                    borderColor: "#2563EB",
-
-                    borderWidth: 2,
-
-                    pointBackgroundColor: "#2563EB"
-
-                },
-
-                {
-                    label: "Industry Requirement",
-
-                    data: [90, 85, 90, 85, 90, 80, 90],
-
-                    fill: true,
-
-                    backgroundColor: "rgba(16,185,129,0.15)",
-
-                    borderColor: "#10B981",
-
-                    borderWidth: 2,
-
-                    pointBackgroundColor: "#10B981"
-
-                }
-
-            ]
-
+          pointBackgroundColor: "#2563EB",
         },
 
-        options: {
+        {
+          label: "Industry Requirement",
 
-            responsive: true,
+          data: [90, 85, 90, 85, 90, 80, 90],
 
-            maintainAspectRatio: false,
+          fill: true,
 
-            scales: {
+          backgroundColor: "rgba(16,185,129,0.15)",
 
-                r: {
+          borderColor: "#10B981",
 
-                    beginAtZero: true,
+          borderWidth: 2,
 
-                    max: 100,
+          pointBackgroundColor: "#10B981",
+        },
+      ],
+    },
 
-                    ticks: {
+    options: {
+      responsive: true,
 
-                        stepSize: 20
+      maintainAspectRatio: false,
 
-                    }
+      scales: {
+        r: {
+          beginAtZero: true,
 
-                }
+          max: 100,
 
-            }
-
-        }
-
-    });
-
+          ticks: {
+            stepSize: 20,
+          },
+        },
+      },
+    },
+  });
 }
 
 // ---------- Bar Chart ----------
@@ -99,90 +120,50 @@ if (radarCanvas) {
 const barCanvas = document.getElementById("barChart");
 
 if (barCanvas) {
+  new Chart(barCanvas, {
+    type: "bar",
 
-    new Chart(barCanvas, {
+    data: {
+      labels: ["Programming", "Database", "Web", "Git", "REST", "Cloud"],
 
-        type: "bar",
+      datasets: [
+        {
+          label: "Skill Level (%)",
 
-        data: {
+          data: [85, 80, 90, 50, 45, 35],
 
-            labels: [
+          backgroundColor: [
+            "#2563EB",
+            "#2563EB",
+            "#2563EB",
+            "#10B981",
+            "#10B981",
+            "#10B981",
+          ],
 
-                "Programming",
-                "Database",
-                "Web",
-                "Git",
-                "REST",
-                "Cloud"
-
-            ],
-
-            datasets: [
-
-                {
-
-                    label: "Skill Level (%)",
-
-                    data: [
-
-                        85,
-                        80,
-                        90,
-                        50,
-                        45,
-                        35
-
-                    ],
-
-                    backgroundColor: [
-
-                        "#2563EB",
-                        "#2563EB",
-                        "#2563EB",
-                        "#10B981",
-                        "#10B981",
-                        "#10B981"
-
-                    ],
-
-                    borderRadius: 8
-
-                }
-
-            ]
-
+          borderRadius: 8,
         },
+      ],
+    },
 
-        options: {
+    options: {
+      responsive: true,
 
-            responsive: true,
+      maintainAspectRatio: false,
 
-            maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
 
-            plugins: {
+      scales: {
+        y: {
+          beginAtZero: true,
 
-                legend: {
-
-                    display: false
-
-                }
-
-            },
-
-            scales: {
-
-                y: {
-
-                    beginAtZero: true,
-
-                    max: 100
-
-                }
-
-            }
-
-        }
-
-    });
-
+          max: 100,
+        },
+      },
+    },
+  });
 }
