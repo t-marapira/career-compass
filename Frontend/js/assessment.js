@@ -2,7 +2,7 @@ const API_BASE_URL =
   window.location.hostname === "localhost" ||
   window.location.hostname === "127.0.0.1"
     ? "http://localhost:3000"
-    : "https://career-compass-api-allb.onrender.com"; // Your Render backend URL
+    : "https://career-compass-api-allb.onrender.com";
 
 const assessmentForm = document.querySelector("form");
 

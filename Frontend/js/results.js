@@ -19,24 +19,51 @@ let results = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   results = JSON.parse(localStorage.getItem("results"));
+  const missingSkills = results.skills_missing;
 
   const matchHeader = document.getElementById("match-value");
   if (matchHeader) {
     matchHeader.innerHTML = `${results.match_percentage}%`;
   }
 
+  const completedEle = document.getElementById("completed-count");
+  if (completedEle) {
+    completedEle.innerHTML = results.matched_count;
+  }
+
   const missingHeader = document.getElementById("missing-value");
   if (missingHeader) {
-    missingHeader.innerHTML = results.skills_missing.length;
+    missingHeader.innerHTML = missingSkills.length;
+  }
+
+  const recommendedHeader = document.getElementById("recommended-count");
+  if (recommendedHeader) {
+    let count = 0;
+    missingSkills.forEach((skill) => {
+      count += skill.recommendations.length;
+    });
+
+    recommendedHeader.innerHTML = count;
   }
 
   const missingSkillsContainer = document.getElementById("missing-skills");
   if (missingSkillsContainer) {
-    const skills_missing = results.skills_missing || [];
-    skills_missing.forEach((skill) => {
+    missingSkills.forEach((skill) => {
       const li = document.createElement("li");
-      li.innerHTML = skill;
+      li.innerHTML = skill.name;
       missingSkillsContainer.appendChild(li);
+    });
+  }
+
+  const recommendationsContainer = document.getElementById("recommended-list");
+  if (recommendationsContainer) {
+    missingSkills.forEach((skill) => {
+      skill.recommendations.forEach((rec) => {
+        const li = document.createElement("li");
+        li.innerHTML = rec
+
+        recommendationsContainer.appendChild(li);
+      });
     });
   }
 });

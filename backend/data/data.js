@@ -15,7 +15,8 @@ async function getRoleSkills(roleId) {
 
   const skills = data.career.requiredSkills;
 
-  return skills.map((skill) => skill.name);
+  // return skills.map((skill) => skill.name);
+  return skills;
 }
 
 async function getStudentSkills(studentId) {
@@ -35,7 +36,8 @@ async function getModuleSkills(moduleId) {
 
   const skills = data.module.acquiredSkills;
 
-  return skills.map((skill) => skill.name);
+  // return skills.map((skill) => skill.name);
+  return skills;
 }
 
 export async function runMatch(moduleIds, roleId) {
@@ -62,7 +64,7 @@ function flattenRequiredSkills(requiredSkillClusters) {
 
 function calculateSkillMatch(requiredSkills, acquiredSkills) {
   // Normalize so "React.js" vs "react js" etc. still matches
-  const normalize = (skill) => skill.toLowerCase().trim();
+  const normalize = (skill) => (skill.id)
 
   const acquiredSet = new Set(acquiredSkills.map(normalize));
 
@@ -70,7 +72,7 @@ function calculateSkillMatch(requiredSkills, acquiredSkills) {
   const missingSkills = [];
 
   requiredSkills.forEach((skill) => {
-    if (acquiredSet.has(normalize(skill))) {
+    if (acquiredSet.has(skill.id)) {
       matchedSkills.push(skill);
     } else {
       missingSkills.push(skill);
@@ -89,5 +91,6 @@ function calculateSkillMatch(requiredSkills, acquiredSkills) {
     gap_percentage: gapPercentage,
     skills_matched: matchedSkills,
     skills_missing: missingSkills,
+    matched_count: matchedSkills.length,
   };
 }
